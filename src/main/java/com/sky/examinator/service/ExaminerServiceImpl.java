@@ -12,6 +12,8 @@ import java.util.Collection;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
+    int questionLimit = 7;
+
     QuestionService questionService;
 
     ExaminerServiceImpl(QuestionService questionService) {
@@ -21,7 +23,6 @@ public class ExaminerServiceImpl implements ExaminerService {
     @Override
     public Collection<Question> getQuestions(int amount) {
         Collection<Question> collection = new ArrayList<>();
-        int questionLimit = 7;
         if (amount > questionLimit) {
             throw new BadRequestException("BAD_REQUEST");
         }
